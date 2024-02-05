@@ -74,7 +74,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ][currentPageIndex]);
   }
 
-  get todayTab => const Center(child: Text("Hoje"));
+  get todayTab => Container(child:
+ const Column(
+   children: [
+     Text(
+         "É um prazer ter você aqui de novo, Ricardo",
+     ),
+     Text(
+         "Suas reservas",
+), Text(
+         "Todas as reservas",
+     )
+], ));
   get calendarTab => const Center(child: Text("Calendário"));
   get advertisingTab => const Center(child: Text("Anúncio"));
   get messagesTab => const Center(child: Text("Mensagens"));
