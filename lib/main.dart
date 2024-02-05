@@ -25,6 +25,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.notifications_none_outlined))
+          ],
+        ),
         bottomNavigationBar: NavigationBar(
           onDestinationSelected: (int index) {
             setState(() {
@@ -58,11 +66,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: [
-        const Center(child: Text("Hoje"),),
-        const Center(child: Text("Calendário"),),
-        const Center(child: Text("Anúncio"),),
-        const Center(child: Text("Mensagens"),),
-        const Center(child: Text("Menu"),),
-][currentPageIndex]);
+          const Center(
+            child: Text("Hoje"),
+          ),
+          const Center(
+            child: Text("Calendário"),
+          ),
+          const Center(
+            child: Text("Anúncio"),
+          ),
+          const Center(
+            child: Text("Mensagens"),
+          ),
+          const Center(
+            child: Text("Menu"),
+          ),
+        ][currentPageIndex]);
   }
 }
