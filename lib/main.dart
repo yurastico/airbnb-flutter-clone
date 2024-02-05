@@ -89,6 +89,28 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 70,
             child: ListView(
               scrollDirection: Axis.horizontal,
+              children: const [
+   SizedBox(width: 10,),
+   ActionChip(
+       label: Text("Action Chip 1")
+   ),
+   SizedBox(width: 10,),
+   ActionChip(
+       label: Text("Action Chip 2")
+   ),
+   SizedBox(width: 10,),
+   ActionChip(
+       label: Text("Action Chip 3")
+   ),
+   SizedBox(width: 10,),
+   ActionChip(
+       label: Text("Action Chip 4")
+   ),
+   SizedBox(width: 10,),
+   ActionChip(
+       label: Text("Action Chip 5")
+   ),
+],
             ),
           ),
           insidePadding(const Text("Todas as reservas")),
