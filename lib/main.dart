@@ -9,20 +9,28 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  MyHomePage({super.key});
+  final List<String> textsOfChips = [
+    "Fazendo checkout (1)",
+    "Chegando em breve (1)",
+    "Programados (1)",
+    "Análise pendente (1)",
+    "Hóspedes no momento (1)"
+  ];
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0;
+  List<bool> statesOfChips = [true, false, false, false, false];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,28 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 70,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: const [
-   SizedBox(width: 10,),
-   ActionChip(
-       label: Text("Action Chip 1")
-   ),
-   SizedBox(width: 10,),
-   ActionChip(
-       label: Text("Action Chip 2")
-   ),
-   SizedBox(width: 10,),
-   ActionChip(
-       label: Text("Action Chip 3")
-   ),
-   SizedBox(width: 10,),
-   ActionChip(
-       label: Text("Action Chip 4")
-   ),
-   SizedBox(width: 10,),
-   ActionChip(
-       label: Text("Action Chip 5")
-   ),
-],
+              children: List.generate(5, (index) => buildChoice(index)),
             ),
           ),
           insidePadding(const Text("Todas as reservas")),
@@ -121,4 +108,18 @@ class _MyHomePageState extends State<MyHomePage> {
   get advertisingTab => const Center(child: Text("Anúncio"));
   get messagesTab => const Center(child: Text("Mensagens"));
   get menuTab => const Center(child: Text("Menu"));
+
+  Widget buildChoice(int index) => Container(
+        margin: const EdgeInsets.only(left: 10),
+        child: ActionChip(
+          label: Text(
+            widget.textsOfChips[index],
+          ),
+          onPressed: () {
+            setState(() {
+              statesOfChips[index] = !statesOfChips[index];
+            });
+          },
+        ),
+      );
 }
