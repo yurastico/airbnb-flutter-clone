@@ -66,21 +66,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: [
-          const Center(
-            child: Text("Hoje"),
-          ),
-          const Center(
-            child: Text("Calendário"),
-          ),
-          const Center(
-            child: Text("Anúncio"),
-          ),
-          const Center(
-            child: Text("Mensagens"),
-          ),
-          const Center(
-            child: Text("Menu"),
-          ),
+          todayTab,
+          calendarTab,
+          advertisingTab,
+          messagesTab,
+          menuTab,
         ][currentPageIndex]);
   }
+
+  get todayTab => const Center(child: Text("Hoje"));
+  get calendarTab => const Center(child: Text("Calendário"));
+  get advertisingTab => const Center(child: Text("Anúncio"));
+  get messagesTab => const Center(child: Text("Mensagens"));
+  get menuTab => const Center(child: Text("Menu"));
 }
