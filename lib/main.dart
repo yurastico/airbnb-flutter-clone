@@ -100,6 +100,48 @@ class _MyHomePageState extends State<MyHomePage> {
               children: List.generate(5, (index) => buildChoice(index)),
             ),
           ),
+          insidePadding(Container(
+            margin: const EdgeInsets.only(bottom: 48.0),
+            width: double.maxFinite,
+            child: const Column(
+              children: [
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 48.0),
+                            child: Text("Checkout amanhã"),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Michael"),
+                                    Text("25 - 26 de jan."),
+                                  ],
+                                ),
+                              ),
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage("images/download.jpeg"),
+                                radius: 24,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          )),
           insidePadding(const Text("Todas as reservas")),
         ],
       ));
