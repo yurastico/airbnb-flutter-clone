@@ -1,3 +1,4 @@
+import 'package:airbnbistic/utils.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -74,18 +75,19 @@ class _MyHomePageState extends State<MyHomePage> {
         ][currentPageIndex]);
   }
 
-  get todayTab => Container(child:
- const Column(
-   children: [
-     Text(
-         "É um prazer ter você aqui de novo, Ricardo",
-     ),
-     Text(
-         "Suas reservas",
-), Text(
-         "Todas as reservas",
-     )
-], ));
+  get todayTab => Container(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          insidePadding(
+              const Text("É um prazer ter você aqui de novo, Ricardo"),
+              bottomPadding: 64),
+          insidePadding(const Text("Suas reservas")),
+          insidePadding(const Text("Todas as reservas")),
+        ],
+      ));
+
   get calendarTab => const Center(child: Text("Calendário"));
   get advertisingTab => const Center(child: Text("Anúncio"));
   get messagesTab => const Center(child: Text("Mensagens"));
