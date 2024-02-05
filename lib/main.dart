@@ -84,6 +84,13 @@ class _MyHomePageState extends State<MyHomePage> {
               const Text("É um prazer ter você aqui de novo, Ricardo"),
               bottomPadding: 64),
           insidePadding(const Text("Suas reservas")),
+          Container(
+            margin: const EdgeInsets.only(bottom: 24.0),
+            height: 70,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+            ),
+          ),
           insidePadding(const Text("Todas as reservas")),
         ],
       ));
