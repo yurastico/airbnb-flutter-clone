@@ -15,23 +15,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         navigationBarTheme: NavigationBarThemeData(
-backgroundColor: Colors.white,
-elevation: 5,
-indicatorColor: Colors.white,
-labelTextStyle: MaterialStateProperty.resolveWith((states) {
-if (states.contains(MaterialState.selected)) { return const TextStyle(
-color: Colors.redAccent, fontWeight: FontWeight.bold
-); }
-return const TextStyle( color: Colors.black
-); }),
-iconTheme: MaterialStateProperty.resolveWith((states){ if (states.contains(MaterialState.selected)) {
-return const IconThemeData( color: Colors.redAccent,
-opacity: 1 );
-}
-return const IconThemeData(
-color: Colors.black, opacity: 0.4
-); })
-),
+            backgroundColor: Colors.white,
+            elevation: 5,
+            indicatorColor: Colors.white,
+            labelTextStyle: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.selected)) {
+                return const TextStyle(
+                    color: Colors.redAccent, fontWeight: FontWeight.bold);
+              }
+              return const TextStyle(color: Colors.black45);
+            }),
+            iconTheme: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.selected)) {
+                return const IconThemeData(color: Colors.redAccent, opacity: 1);
+              }
+              return const IconThemeData(color: Colors.black, opacity: 0.4);
+            })),
         chipTheme: ChipThemeData(
           disabledColor: Colors.white,
           selectedColor: Colors.white,
@@ -176,11 +175,11 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(bottom: 48.0),
                         child: Text(
                           "Checkout amanhã",
@@ -207,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                             ),
-                            CircleAvatar(
+                            const CircleAvatar(
                               backgroundImage:
                                   AssetImage("images/download.jpeg"),
                               radius: 24,
@@ -227,11 +226,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     Expanded(
                       child: TextButton(
                         style: const ButtonStyle(
-             tapTargetSize: MaterialTapTargetSize.shrinkWrap
-),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                         onPressed: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Text("Enviar mensagem"),
                         ),
                       ),
@@ -243,8 +241,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     Expanded(
                       child: TextButton(
                         onPressed: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Text("Ligar"),
                         ),
                       ),
