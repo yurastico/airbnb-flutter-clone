@@ -2,6 +2,8 @@
 import 'package:airbnbistic/utils.dart';
 import 'package:flutter/material.dart';
 
+get todayTab => ChipsToday();
+
 class ChipsToday extends StatefulWidget {
   ChipsToday({super.key});
 

@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: [
-          ChipsToday(),
+          todayTab,
           calendarTab,
           advertisingTab,
           messagesTab,
