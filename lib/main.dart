@@ -1,4 +1,4 @@
-import 'package:airbnb_fiap_2/utils.dart';
+import 'package:airbnbistic/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,7 +7,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   const MyApp({super.key});
 
   @override
@@ -15,6 +14,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        navigationBarTheme: NavigationBarThemeData(
+backgroundColor: Colors.white,
+elevation: 5,
+indicatorColor: Colors.white,
+labelTextStyle: MaterialStateProperty.resolveWith((states) {
+if (states.contains(MaterialState.selected)) { return const TextStyle(
+color: Colors.redAccent, fontWeight: FontWeight.bold
+); }
+return const TextStyle( color: Colors.black
+); }),
+iconTheme: MaterialStateProperty.resolveWith((states){ if (states.contains(MaterialState.selected)) {
+return const IconThemeData( color: Colors.redAccent,
+opacity: 1 );
+}
+return const IconThemeData(
+color: Colors.black, opacity: 0.4
+); })
+),
         chipTheme: ChipThemeData(
           disabledColor: Colors.white,
           selectedColor: Colors.white,
@@ -28,9 +45,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
         textTheme: TextTheme(
-          headlineMedium: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              color: Colors.black
-          ),
+          headlineMedium: Theme.of(context)
+              .textTheme
+              .headlineMedium
+              ?.copyWith(color: Colors.black),
         ),
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black),
@@ -40,7 +58,6 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(),
     );
   }
-
 }
 
 class MyHomePage extends StatefulWidget {
@@ -51,7 +68,8 @@ class MyHomePage extends StatefulWidget {
     "Chegando em breve (1)",
     "Programados (1)",
     "Análise pendente (1)",
-    "Hóspedes no momento (1)"];
+    "Hóspedes no momento (1)"
+  ];
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -69,15 +87,14 @@ class _MyHomePageState extends State<MyHomePage> {
           toolbarHeight: 80,
           systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.white,
-              statusBarIconBrightness: Brightness.dark
-          ),
+              statusBarIconBrightness: Brightness.dark),
           elevation: 0,
           actions: [
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                    onPressed: (){},
+                    onPressed: () {},
                     icon: const Icon(Icons.notifications_none_outlined))
               ],
             )
@@ -92,7 +109,9 @@ class _MyHomePageState extends State<MyHomePage> {
           selectedIndex: currentPageIndex,
           destinations: const <Widget>[
             NavigationDestination(
-              icon: Icon(Icons.today,),
+              icon: Icon(
+                Icons.today,
+              ),
               label: 'Hoje',
             ),
             NavigationDestination(
@@ -119,8 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
           advertisingTab,
           messagesTab,
           menuTab,
-        ][currentPageIndex]
-    );
+        ][currentPageIndex]);
   }
 
   get calendarTab => const Center(child: Text("Calendário"));
@@ -134,14 +152,11 @@ class _MyHomePageState extends State<MyHomePage> {
           insidePadding(
               Text(
                 "É um prazer ter você aqui de novo, Ricardo",
-                style: Theme.of(context).textTheme.headlineMedium,),
-              bottomPadding: 64
-          ),
-          insidePadding(
-              Text(
-                "Suas reservas",
-                style: Theme.of(context).textTheme.titleLarge)
-          ),
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              bottomPadding: 64),
+          insidePadding(Text("Suas reservas",
+              style: Theme.of(context).textTheme.titleLarge)),
           Container(
             margin: const EdgeInsets.only(bottom: 24.0),
             height: 70,
@@ -150,126 +165,123 @@ class _MyHomePageState extends State<MyHomePage> {
               children: List.generate(5, (index) => buildChoice(index)),
             ),
           ),
-          insidePadding(
-              Container(
-                margin: const EdgeInsets.only(bottom: 48.0),
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Colors.black26,
-                      style: BorderStyle.solid,
-                      width: 0.5
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 48.0),
-                            child: Text(
-                              "Checkout amanhã",
-                              style: TextStyle(
-                                  color: Colors.redAccent,
-                                  fontWeight: FontWeight.bold
-                              ),),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Michael",
-                                      style: Theme.of(context).textTheme.titleLarge),
-                                    Text(
-                                      "25 - 26 de jan.",
-                                      style: Theme.of(context).textTheme.titleLarge),
-                                  ],
-                                ),
+          insidePadding(Container(
+            margin: const EdgeInsets.only(bottom: 48.0),
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              border: Border.all(
+                  color: Colors.black26, style: BorderStyle.solid, width: 0.5),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 48.0),
+                        child: Text(
+                          "Checkout amanhã",
+                          style: TextStyle(
+                              color: Colors.redAccent,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      IntrinsicHeight(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Michael",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge),
+                                  Text("25 - 26 de jan.",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge),
+                                ],
                               ),
-                              CircleAvatar(
-                                backgroundImage: AssetImage("images/download.jpeg"),
-                                radius: 24,
-                              )
-                            ],
-                          )
-                        ],
+                            ),
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("images/download.jpeg"),
+                              radius: 24,
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const Divider(
+                  color: Colors.black26,
+                  height: 1,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        style: const ButtonStyle(
+             tapTargetSize: MaterialTapTargetSize.shrinkWrap
+),
+                        onPressed: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Enviar mensagem"),
+                        ),
                       ),
                     ),
-                    const Divider(
+                    const VerticalDivider(
                       color: Colors.black26,
-                      height: 1,
+                      width: 1,
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextButton(
-                            onPressed: (){},
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Enviar mensagem"),
-                            ),
-                          ),
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Ligar"),
                         ),
-                        const VerticalDivider(
-                          color: Colors.black26,
-                          width: 1,
-                        ),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: (){},
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Ligar"),
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
-              )
-          ),
-          insidePadding(
-              Text(
-                "Todas as reservas",
-                style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  decoration: TextDecoration.underline,
-                )
-              )
-          ),
+              ],
+            ),
+          )),
+          insidePadding(Text("Todas as reservas",
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    decoration: TextDecoration.underline,
+                  ))),
         ],
-      )
-  );
+      ));
 
   get advertisingTab => const Center(child: Text("Anúncio"));
   get messagesTab => const Center(child: Text("Mensagens"));
   get menuTab => const Center(child: Text("Menu"));
 
   Widget buildChoice(int index) => Container(
-    margin: const EdgeInsets.only(left: 10),
-    child: ActionChip(
-      label: Text(
-        widget.textsOfChips[index],
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-        side: BorderSide(
-          width: statesOfChips[index] ? 2.0 : 0.5,
+        margin: const EdgeInsets.only(left: 10),
+        child: ActionChip(
+          label: Text(
+            widget.textsOfChips[index],
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            side: BorderSide(
+              width: statesOfChips[index] ? 2.0 : 0.5,
+            ),
+          ),
+          onPressed: () {
+            setState(() {
+              statesOfChips[index] = !statesOfChips[index];
+            });
+          },
         ),
-      ),
-      onPressed: () {
-        setState(() {
-          statesOfChips[index] = !statesOfChips[index];
-        });
-      },
-    ),
-  );
-
+      );
 }
