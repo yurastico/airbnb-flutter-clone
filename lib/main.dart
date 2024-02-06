@@ -14,6 +14,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        chipTheme: ChipThemeData(
+          disabledColor: Colors.white,
+          selectedColor: Colors.white,
+          secondarySelectedColor: Colors.black,
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: const BorderSide(
+              width: 0.5,
+            ),
+          ),
+        ),
         textTheme: TextTheme(
           headlineMedium: Theme.of(context)
               .textTheme
@@ -119,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               bottomPadding: 64),
           insidePadding(Text("Suas reservas",
-          style: Theme.of(context).textTheme.titleLarge)),
+              style: Theme.of(context).textTheme.titleLarge)),
           Container(
             margin: const EdgeInsets.only(bottom: 24.0),
             height: 70,
@@ -187,9 +199,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           )),
-          insidePadding(const Text("Todas as reservas",
-          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-decoration: TextDecoration.underline, ))),
+          insidePadding(Text("Todas as reservas",
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    decoration: TextDecoration.underline,
+                  ))),
         ],
       ));
 
@@ -203,6 +216,12 @@ decoration: TextDecoration.underline, ))),
         child: ActionChip(
           label: Text(
             widget.textsOfChips[index],
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(
+              width: statesOfChips[index] ? 2.0 : 0.5,
+            ),
           ),
           onPressed: () {
             setState(() {
