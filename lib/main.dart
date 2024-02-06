@@ -1,5 +1,6 @@
 import 'package:airbnbistic/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: TextTheme(
+headlineMedium: Theme.of(context).textTheme.headlineMedium?.copyWith( color: Colors.black
+), ),
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black),
           color: Colors.white,
@@ -47,6 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: 80,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: Colors.white,
+              statusBarIconBrightness: Brightness.dark),
           elevation: 0,
           actions: [
             IconButton(
@@ -96,12 +104,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   get todayTab => Container(
+          color: Colors.white,
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
           insidePadding(
-              const Text("É um prazer ter você aqui de novo, Ricardo"),
+              Text("É um prazer ter você aqui de novo, Ricardo",
+              style: Theme.of(context).textTheme.headlineMedium,),
               bottomPadding: 64),
           insidePadding(const Text("Suas reservas")),
           Container(
