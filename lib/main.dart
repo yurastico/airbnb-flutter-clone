@@ -15,8 +15,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: TextTheme(
-headlineMedium: Theme.of(context).textTheme.headlineMedium?.copyWith( color: Colors.black
-), ),
+          headlineMedium: Theme.of(context)
+              .textTheme
+              .headlineMedium
+              ?.copyWith(color: Colors.black),
+        ),
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black),
           color: Colors.white,
@@ -104,16 +107,19 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   get todayTab => Container(
-          color: Colors.white,
-          child: Column(
+      color: Colors.white,
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
           insidePadding(
-              Text("É um prazer ter você aqui de novo, Ricardo",
-              style: Theme.of(context).textTheme.headlineMedium,),
+              Text(
+                "É um prazer ter você aqui de novo, Ricardo",
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
               bottomPadding: 64),
-          insidePadding(const Text("Suas reservas")),
+          insidePadding(Text("Suas reservas",
+          style: Theme.of(context).textTheme.titleLarge)),
           Container(
             margin: const EdgeInsets.only(bottom: 24.0),
             height: 70,
@@ -181,7 +187,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           )),
-          insidePadding(const Text("Todas as reservas")),
+          insidePadding(const Text("Todas as reservas",
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(
+decoration: TextDecoration.underline, ))),
         ],
       ));
 
